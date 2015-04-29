@@ -24,7 +24,7 @@ public class UE1a31 {
 		// init
 
 		for (int count = 1; count <= N; count++) {
-			a[count] = (int) (10 * Math.random());
+			a[count] = (int) (N * Math.random());
 			System.out.print(count + ": " + a[count] + "|");
 		}
 

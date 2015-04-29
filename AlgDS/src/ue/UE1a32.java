@@ -28,6 +28,9 @@ public class UE1a32 {
 		i = (int) (N * Math.random());
 		j = (int) ((N - i) * Math.random() + i);
 
+		i = 1;
+		j = N;
+		
 		System.out.println(" <> N:" + N + " i:" + i + " j:" + j);
 
 		System.out.println(p(a, i, j));
