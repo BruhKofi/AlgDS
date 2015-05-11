@@ -135,16 +135,7 @@ public class List {
 	 *            the element ahead of which the new element is to be inserted
 	 */
 	public void insertBefore(Element newElement, Element next) {
-		if (next.equals(first)) {
-			first = newElement;
-		} else {
-			Element prev = next.getPrev();
-			prev.setNext(newElement);
-			newElement.setPrev(prev);
-		}
-		newElement.setNext(next);
-		next.setPrev(newElement);
-
+		// TODO: Code hier einfuegen
 	}
 
 	/**
@@ -154,31 +145,7 @@ public class List {
 	 *            the element that is to be removed
 	 */
 	public void deleteThis(Element element) {
-
-		Element prev = element.getPrev();
-		Element next = element.getNext();
-
-		if (prev == null) {
-			if (next == null) {
-				first = last = null; // case A = length=1 delete only element by
-										// deleting list
-			} else {
-				first = next;
-				next.setPrev(null); // case B Element is at the very beginning.
-									// Set first and reset prev of next element
-			}
-		} else {
-			if (next == null) {
-				last = prev;
-				prev.setNext(null); // case C element is at the very end. set
-									// last and reset next of prev element
-			} else {
-				next.setPrev(prev);
-				prev.setNext(next); // case D element is in th emiddle set prev
-									// and next of adjourning elements
-			}
-		}
-
+		// TODO: Code hier einfuegen
 	}
 
 	/**
@@ -187,31 +154,16 @@ public class List {
 	 * @return this list's length
 	 */
 	public int length() {
-		if (isEmpty()) {
-			return 0;
-		}
-		int l = 1;
-		Element runningElement = first;
-		while (runningElement.equals(last) == false) {
-			l++;
-			runningElement = runningElement.getNext();
-		};
-		return l;
+		// TODO: Code hier einfuegen
+
+		return -1;
 	}
 
 	/**
 	 * Inverts the list, i.e., reverses the sequence of elements of this list.
 	 */
-
 	public void reverse() {
-		int len = length();
-		if (len > 1) {
-			Element oldlast = getLast();
-			for (int i = 1; i < len; i++) {
-				insertAfter(new Element(getFirst()), oldlast);
-				deleteThis(getFirst());
-			}
-		}
+		// TODO: Code hier einfuegen
 	}
 
 	public static void main(String[] args) {

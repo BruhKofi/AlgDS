@@ -4,6 +4,67 @@
 
 import java.math.BigInteger;
 
+class Element {
+	private Element next;
+	private Object value;
+
+	public Element(Object value) {
+		this.value = value;
+		next = null;
+	}
+
+	public Object getValue() {
+		return value;
+	}
+
+	public Element getNext() {
+		return next;
+	}
+
+	public void setNext(Element next) {
+		this.next = next;
+	}
+
+	@Override
+	public String toString() {
+		return getValue().toString();
+	}
+
+}
+
+class Stack {
+
+	private Element first;
+
+	public Stack() {
+		first = null;
+	}
+
+	public boolean isEmpty() {
+		return first == null;
+	}
+
+	public Element getFirst() {
+		return first;
+	}
+
+	@Override
+	public String toString() {
+		return getValue().toString();
+	}
+
+	public void addFirst(Element element) {
+		if (isEmpty()) {
+			first = element;
+		} else {
+			element.setNext(first);
+			first.setPrev(element);
+			first = element;
+		}
+	}
+
+}
+
 public class Parser {
 
 	/**
@@ -15,8 +76,8 @@ public class Parser {
 	 */
 	private static boolean isNatural(String input) {
 		try {
-			BigInteger bi=new BigInteger(input);
-			if (bi.compareTo(new BigInteger("0"))<0) {
+			BigInteger bi = new BigInteger(input);
+			if (bi.compareTo(new BigInteger("0")) < 0) {
 				return false;
 			}
 		} catch (NumberFormatException e) {
@@ -27,11 +88,13 @@ public class Parser {
 	}
 
 	/**
-	 * Returns true if the String argument is an operator ("+", "-", "*", or "/")
+	 * Returns true if the String argument is an operator ("+", "-", "*", or
+	 * "/")
 	 * 
 	 * @param c
 	 *            the character that is to be checked
-	 * @return true if the String argument is an operator ("+", "-", "*", or "/")
+	 * @return true if the String argument is an operator ("+", "-", "*", or
+	 *         "/")
 	 */
 	private static boolean isOperator(char c) {
 		if (c == '+' || c == '-' || c == '*' || c == '/') {
@@ -41,8 +104,6 @@ public class Parser {
 		return false;
 	}
 
-	
-
 	/**
 	 * Returns true if the arithmetic expression is well-formed
 	 * 
@@ -51,8 +112,8 @@ public class Parser {
 	 * @return true if the arithmetic expression is well-formed
 	 */
 	private static boolean isWellFormed(String expression) {
-		
-		//TODO: implementation of well-formedness check
+
+		// TODO: implementation of well-formedness check
 
 		return false;
 	}
@@ -65,24 +126,27 @@ public class Parser {
 	 * @return the result of a given arithmetic expression
 	 */
 	private static BigInteger compute(String expression) {
-		
-		//TODO: implementation of computation
+
+		// TODO: implementation of computation
 		return new BigInteger("0");
 	}
 
 	/**
-	 * Parses a given String, determines, whether it is a well-formed expression, and computes the expression
+	 * Parses a given String, determines, whether it is a well-formed
+	 * expression, and computes the expression
 	 * 
 	 * @param expression
 	 *            the expression that is to be conmputed
-	 * @return "expression not well-formed", if the expression is not well-formed, "error during computation", if there was an error during computation (e.g.,
-	 *         division by zero), or the result of the computation
+	 * @return "expression not well-formed", if the expression is not
+	 *         well-formed, "error during computation", if there was an error
+	 *         during computation (e.g., division by zero), or the result of the
+	 *         computation
 	 */
 	public static String parse(String expression) {
 		try {
 			if (isWellFormed(expression)) {
 				try {
-					BigInteger bi=compute(expression);
+					BigInteger bi = compute(expression);
 					return bi.toString();
 				} catch (RuntimeException e) {
 					return "error during computation";
