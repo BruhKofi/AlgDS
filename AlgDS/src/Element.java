@@ -1,6 +1,5 @@
 /**
- * An element of a list that stores a Java object alongside pointers to the
- * previous and next element.
+ * An element of a list that stores a Java object alongside pointers to the previous and next element.
  */
 public class Element {
 	private Object value;
@@ -42,8 +41,7 @@ public class Element {
 	 * Assigns an element as being next to this element.
 	 * 
 	 * @param next
-	 *            the element which is to be assigned as being next to this
-	 *            element
+	 *            the element which is to be assigned as being next to this element
 	 */
 	public void setNext(Element next) {
 		this.next = next;
@@ -53,8 +51,7 @@ public class Element {
 	 * Assigns an element as being previous to this element.
 	 * 
 	 * @param prev
-	 *            the element which is to be assigned as being previous to this
-	 *            element
+	 *            the element which is to be assigned as being previous to this element
 	 */
 	public void setPrev(Element prev) {
 		this.prev = prev;
