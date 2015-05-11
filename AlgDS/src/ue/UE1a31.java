@@ -1,7 +1,7 @@
 package ue;
 
 public class UE1a31 {
-
+  
 	public static int p(int N, int[] a) {
 		int x = 0;
 
