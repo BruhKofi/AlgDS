@@ -32,39 +32,6 @@ class Element {
 
 }
 
-class Stack {
-
-	private Element first;
-
-	public Stack() {
-		first = null;
-	}
-
-	public boolean isEmpty() {
-		return first == null;
-	}
-
-	public Element getFirst() {
-		return first;
-	}
-
-	@Override
-	public String toString() {
-		return getValue().toString();
-	}
-
-	public void addFirst(Element element) {
-		if (isEmpty()) {
-			first = element;
-		} else {
-			element.setNext(first);
-			first.setPrev(element);
-			first = element;
-		}
-	}
-
-}
-
 public class Parser {
 
 	/**
