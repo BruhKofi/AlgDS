@@ -4,34 +4,6 @@
 
 import java.math.BigInteger;
 
-class Element {
-	private Element next;
-	private Object value;
-
-	public Element(Object value) {
-		this.value = value;
-		next = null;
-	}
-
-	public Object getValue() {
-		return value;
-	}
-
-	public Element getNext() {
-		return next;
-	}
-
-	public void setNext(Element next) {
-		this.next = next;
-	}
-
-	@Override
-	public String toString() {
-		return getValue().toString();
-	}
-
-}
-
 public class Parser {
 
 	/**
@@ -85,6 +57,26 @@ public class Parser {
 		return false;
 	}
 
+	// ##########################
+
+	private int ausdruck(String expression) {
+		// expression = term { ( "+" | "-" ) term }
+		BigInteger left = term();
+		while (scanner.token == Token.plusop || scanner.token == Token.minusop) {
+			int saveToken = scanner.token;
+			scanner.getToken();
+			switch (saveToken) {
+				case Token.plusop :
+					left += term();
+					break;
+				case Token.minusop :
+					left -= term();
+					break;
+			} // switch
+		} // while
+		return left;
+	} // expression
+
 	/**
 	 * Returns the result of a given arithmetic expression
 	 * 
@@ -94,8 +86,13 @@ public class Parser {
 	 */
 	private static BigInteger compute(String expression) {
 
-		// TODO: implementation of computation
-		return new BigInteger("0");
+		while (expression.length() != 0) {
+			BigInteger result = ausdruck(expression);
+			System.out.println("=> " + result);
+			scanner.getToken(); // flush ";"
+		} // while
+
+		return result;
 	}
 
 	/**

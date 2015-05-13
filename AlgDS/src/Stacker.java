@@ -1,6 +1,6 @@
 public class Stacker {
 
-	class Item {
+	static class Item {
 		private Item next;
 		private Object value;
 
@@ -28,7 +28,7 @@ public class Stacker {
 
 	}
 
-	class Stack {
+	static class Stack {
 		private Item first;
 		private int hight;
 
@@ -54,14 +54,14 @@ public class Stacker {
 			hight++;
 		}
 
-		public Item pop() {
+		public String pop() {
 			if (isEmpty()) {
 				return null;
 			} else {
 				hight--;
 				Item result = first;
 				first = first.getNext();;
-				return result;
+				return result.getValue().toString();
 			}
 		}
 
@@ -83,12 +83,18 @@ public class Stacker {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Beginne mit leerer Liste:");
+		System.out.println("Beginne mit leerem Stack:");
 		Stack stack = new Stack();
-		stack.push(new Item("as"));
-		stack.push(new Item("you"));
-		System.out.println("\t" + stack);
-
+		stack.push(new Item("1"));
+		stack.push(new Item("2"));
+		stack.push(new Item("3"));
+		System.out.println("\t" + stack.getHeight() + ": " + stack);
+		String result = stack.pop();
+		stack.push(new Item("5"));
+		result = result + " " + stack.pop();
+		result = result + " " + stack.pop();
+		System.out.println("\t" + stack.getHeight() + ": " + stack + " "
+				+ result);
 	}
 
 }
