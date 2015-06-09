@@ -9,7 +9,7 @@ public class InterpolationSearch extends Search {
 		int r = sortedList.length - 1;
 		int m = 0;
 		int comparison = 0;
-
+		long a, b = 0;
 		double pos = 0.0;
 		while (key >= sortedList[l] && key <= sortedList[r]) {
 
