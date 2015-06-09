@@ -1,5 +1,7 @@
+package ue4;
+
 public abstract class Search {
-	
+
 	protected CountingComparator comparator;
 
 	public Search() {
